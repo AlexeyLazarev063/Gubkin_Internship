@@ -1,56 +1,56 @@
-Ext.define('individualAchievments.view.main.achievments.achievmentswindow.achievmentsWin', {
+Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.AchievmentsWin', {
     extend: 'Ext.window.Window',
     xtype: 'ListWin',
 
-    require:[
-        'individualAchievments.store.achievmentsdatewin',
-        'individualAchievments.view.main.achievments.achievmentsModel'
+    require: [
+        'individualAchievments.view.main.achievments.AchievmentsModel',
+        'individualAchievments.view.main.achievments.AchievmentsController'
     ],
-
-
-
-    title: 'Achievments',
 
     viewmodel: 'datewin',
     controller: 'achievments',
 
+    title: 'Achievments',
     modal: true,
-    items:[
+    items: [
         {
             xtype: 'combo',
             fieldLabel:'Наименование достижения',
             width: 700,
             margin:10,
             store: 'individualAchievments.store.achievmentsdatewin',
-            displayField: 'name',
             valueField: 'id',
+            displayField: 'name',
             bind: {
                 value: '{achievments.name}'
             }
 
-        },{
+        },
+        {
             xtype: 'combo',
             fieldLabel:'Статус достижения',
             width: 700,
             margin:10,
-            displayField: 'status',
-            valueField: 'id',
             store: 'individualAchievments.store.achievmentsdatewin',
+            valueField: 'id',
+            displayField: 'status',
             bind: {
                 value: '{achievments.status}'
             }
-        },{
+        },
+        {
             xtype: 'combo',
             fieldLabel:'Условие достижения',
             width: 700,
             margin:10,
             store: 'individualAchievments.store.achievmentsdatewin',
-            displayField: 'condition',
             valueField: 'id',
+            displayField: 'condition',
             bind: {
                 value: '{achievments.condition}'
             }
-        },{
+        },
+        {
             xtype:'textfield',
             fieldLabel:'Описание',
             labelAlign: 'top',
@@ -59,19 +59,16 @@ Ext.define('individualAchievments.view.main.achievments.achievmentswindow.achiev
 
         }
     ],
-    buttons: [{
 
-        text: 'Добавить',
-        handler: function() {
-
-
+    buttons: [
+        {
+            text: 'Добавить',
+            handler: 'addInfoAchievments'
+        },
+        {
+            text: 'Cancel',
+            handler: 'closeWindowAchievments'
         }
-    },{
-        text: 'Cancel',
-        //handler: 'closewindow'
-        handler: function (){
-            this.up('ListWin').close()
-        }
-    }]
+    ]
 
 });
