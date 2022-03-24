@@ -70,25 +70,28 @@ Ext.define('individualAchievments.view.main.Main', {
     items: [{
         title: 'Achievments',
         iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
+        scrollable: true,
         items: [{
             xtype: 'mainlist'
         }]
     }, {
         title: "Achievment's name" ,
         iconCls: 'fa-user',
+        scrollable: true,
         items: [{
             xtype: 'mainlistName'
         }]
     }, {
         title: 'Status',
         iconCls: 'fa-users',
+        scrollable: true,
         items: [{
             xtype: 'mainlistStatus'
         }]
     }, {
         title: 'Conditions',
         iconCls: 'fa-cog',
+        scrollable: true,
         items: [{
             xtype: 'mainlistCond'
         }]
