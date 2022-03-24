@@ -1,4 +1,4 @@
-Ext.define('individualAchievments.view.main.achievments.achievmentsconditionController', {
+Ext.define('individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.achievmentsCond',
@@ -7,7 +7,7 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsconditionCont
 
         let gridRecords = item.getSelectionModel().getSelection()[0];
 
-        Ext.create('individualAchievments.view.main.achievmentscondition.achievmentsconditionwindow.achievmentsCondWin', {
+        Ext.create('individualAchievments.view.main.achievmentsCondition.achievmentsConditionWindow.AchievmentsConditionWin', {
             viewModel:{
                 data:{
                     achievments: gridRecords.data
@@ -16,8 +16,8 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsconditionCont
         }).show()
     },
 
-    closeWindow: function(item){
-        item.up("mainlistCond").close();
+    closeWindow4: function(item){
+        item.up("window").close();
     }
 
 });

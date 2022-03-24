@@ -1,4 +1,4 @@
-Ext.define('individualAchievments.view.main.achievments.achievmentsModel', {
+Ext.define('individualAchievments.view.main.achievments.AchievmentsModel', {
 
     extends: 'Ext.app.ViewModel',
 

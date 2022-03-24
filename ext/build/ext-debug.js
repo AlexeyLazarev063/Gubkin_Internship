@@ -2471,7 +2471,7 @@ var Ext = Ext || {};
       "idx": 250
     },
     {
-      "path": "../packages/core/src/data/validator/achievments.js",
+      "path": "../packages/core/src/data/validator/Achievments.js",
       "requires": [
         138
       ],
@@ -5683,7 +5683,7 @@ var Ext = Ext || {};
       "idx": 570
     },
     {
-      "path": "../classic/classic/src/grid/filters/filter/achievments.js",
+      "path": "../classic/classic/src/grid/filters/filter/Achievments.js",
       "requires": [
         567
       ],

@@ -1,4 +1,4 @@
-Ext.define('individualAchievments.view.main.achievments.achievmentsnameController', {
+Ext.define('individualAchievments.view.main.achievmentsName.AchievmentsNameController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.achievmentsName',
@@ -7,7 +7,7 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsnameControlle
 
         let gridRecords = item.getSelectionModel().getSelection()[0];
 
-        Ext.create('individualAchievments.view.main.achievmentsname.achievmentsnamewindow.achievmentsNameWin',{
+        Ext.create('individualAchievments.view.main.achievmentsName.achievmentsNameWindow.AchievmentsNameWin',{
             viewModel:{
                 data:{
                     achievments: gridRecords.data
@@ -16,8 +16,8 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsnameControlle
         }).show()
     },
 
-    closeWindow: function(item){
-        item.up("mainlistName").close();
+    closeWindow2: function(item){
+        item.up("window").close();
     }
 
 

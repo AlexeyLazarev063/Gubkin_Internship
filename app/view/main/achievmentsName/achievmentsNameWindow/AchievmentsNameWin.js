@@ -1,35 +1,30 @@
-Ext.define('individualAchievments.view.main.achievmentsname.achievmentsnamewindow.achievmentsNameWin', {
+Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameWindow.AchievmentsNameWin', {
     extend: 'Ext.window.Window',
     xtype: 'ListNameWin',
 
     require:[
         'individualAchievments.store.achievmentsdatewin',
-        "individualAchievments.view.main.achievments.achievmentsModel",
-        "individualAchievments.view.main.achievmentsname.achievmentsnameModel"
+        "individualAchievments.view.main.achievmentsName.AchievmentsNameModel",
+        'individualAchievments.view.main.achievmentsName.AchievmentsNameController'
     ],
-
-    title: 'Achievment\'s name',
 
     viewModel: "datewinname",
     controller: 'achievmentsName',
 
+    title: 'Achievment\'s name',
     modal: true,
-
-
-
     items:[
         {
-            margin: 10,
             xtype: 'textfield',
-            fieldLabel: 'Наименование достижения',
-            labelAlign: 'top',
             width: 600,
             height: 50,
-            valueField: 'id',
-            emptytext: 'Введите текст',
+            margin: 10,
             store: 'individualAchievments.store.achievmentsdatewin',
-            displayField: 'condition',
             valueField: 'id',
+            displayField: 'condition',
+            fieldLabel: 'Наименование достижения',
+            labelAlign: 'top',
+            emptytext: 'Введите текст',
             bind: {
                 value: '{achievments.name}'
             }
@@ -46,9 +41,7 @@ Ext.define('individualAchievments.view.main.achievmentsname.achievmentsnamewindo
         }
     },{
         text: 'Cancel',
-        handler: function () {
-            this.up('window').close();
-        }
+        handler: 'closeWindow2'
     }]
 
 });

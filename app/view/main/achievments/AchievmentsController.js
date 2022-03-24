@@ -1,4 +1,4 @@
-Ext.define('individualAchievments.view.main.achievments.achievmentsController', {
+Ext.define('individualAchievments.view.main.achievments.AchievmentsController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.achievments',
@@ -6,7 +6,7 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsController', 
     onItemSelected1: function (item) {
         let gridRecords = item.getSelectionModel().getSelection()[0];
 
-        Ext.create('individualAchievments.view.main.achievments.achievmentswindow.achievmentsWin',{
+        Ext.create('individualAchievments.view.main.achievments.achievmentsWindow.AchievmentsWin',{
             viewModel:{
                 data:{
                     achievments: gridRecords.data
