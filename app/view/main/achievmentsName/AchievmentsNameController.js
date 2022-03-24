@@ -2,7 +2,7 @@ Ext.define('individualAchievments.view.main.achievmentsName.AchievmentsNameContr
     extend: 'Ext.app.ViewController',
     alias: 'controller.achievmentsName',
 
-    onItemSelected2: function (item) {
+    onItemSelectedAchievmentsName: function (item) {
         let gridRecords = item.getSelectionModel().getSelection()[0];
 
         Ext.create('individualAchievments.view.main.achievmentsName.achievmentsNameWindow.AchievmentsNameWin',{
@@ -14,15 +14,15 @@ Ext.define('individualAchievments.view.main.achievmentsName.AchievmentsNameContr
         }).show()
     },
 
-    closeWindow2: function(item) {
+    closeWindowAchievmentsName: function(item) {
         item.up("window").close();
     },
 
-    createWindow2: function() {
+    createWindowAchievmentsName: function() {
         Ext.create('individualAchievments.view.main.achievmentsName.achievmentsNameWindow.AchievmentsNameWin').show()
     },
 
-    addInfo2: function() {
+    addInfoAchievmentsName: function() {
 
     }
 });

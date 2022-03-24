@@ -2,7 +2,7 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.AchievmentsCond
     extend: 'Ext.app.ViewController',
     alias: 'controller.achievmentsCond',
 
-    onItemSelected4: function (item) {
+    onItemSelectedAchievmentsCondition: function (item) {
 
         let gridRecords = item.getSelectionModel().getSelection()[0];
 
@@ -15,15 +15,15 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.AchievmentsCond
         }).show()
     },
 
-    closeWindow4: function(item) {
+    closeWindowAchievmentsCondition: function(item) {
         item.up("window").close();
     },
 
-    createWindow4: function() {
+    createWindowAchievmentsCondition: function() {
         Ext.create('individualAchievments.view.main.achievmentsCondition.achievmentsConditionWindow.AchievmentsConditionWin').show()
     },
 
-    addInfo4: function() {
+    addInfoAchievmentsCondition: function() {
 
     }
 

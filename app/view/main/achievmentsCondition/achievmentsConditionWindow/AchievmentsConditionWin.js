@@ -33,11 +33,11 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsCond
     buttons: [
         {
             text: 'Добавить',
-            handler: 'addInfo4'
+            handler: 'addInfoAchievmentsCondition'
         },
         {
             text: 'Cancel',
-            handler: 'closeWindow4'
+            handler: 'closeWindowAchievmentsCondition'
         }
     ]
 

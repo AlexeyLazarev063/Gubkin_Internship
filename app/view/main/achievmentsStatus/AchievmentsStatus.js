@@ -18,7 +18,7 @@ Ext.define('individualAchievments.view.main.achievmentsStatus.AchievmentsStatus'
             width: 100,
             length: 70,
             margin: 5,
-            handler: 'createWindow3'
+            handler: 'createWindowAchievmentsStatus'
         },
         {
             xtype: 'mainlistStatusGrid'

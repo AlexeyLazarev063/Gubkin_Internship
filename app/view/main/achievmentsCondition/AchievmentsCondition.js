@@ -22,7 +22,7 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.AchievmentsCond
             width: 100,
             length: 70,
             margin: 5,
-            handler: 'createWindow4'
+            handler: 'createWindowAchievmentsCondition'
         },
         {
             xtype: 'mainlistCondGrid'

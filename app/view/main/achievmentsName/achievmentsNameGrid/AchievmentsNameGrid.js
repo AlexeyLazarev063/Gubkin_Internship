@@ -4,6 +4,7 @@ Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameGrid.
 
     requires: [
         'individualAchievments.view.main.achievmentsName.AchievmentsNameController',
+        'individualAchievments.view.main.achievmentsname.AchievmentsNameModel'
     ],
 
     store: {
@@ -22,7 +23,7 @@ Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameGrid.
         }
     ],
     listeners: {
-        cellclick: 'onItemSelected2'
+        cellclick: 'onItemSelectedAchievmentsName'
     }
 
 });

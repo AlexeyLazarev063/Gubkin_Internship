@@ -3,7 +3,8 @@ Ext.define('individualAchievments.view.main.achievmentsGrid.AchievmentsGrid', {
     xtype: 'mainlistGrid',
 
     requires: [
-        'individualAchievments.view.main.achievments.AchievmentsController'
+        'individualAchievments.view.main.achievments.AchievmentsController',
+        'individualAchievments.view.main.achievments.AchievmentsModel'
     ],
 
     store: {
@@ -43,7 +44,7 @@ Ext.define('individualAchievments.view.main.achievmentsGrid.AchievmentsGrid', {
         }
     ],
     listeners: {
-        cellclick: 'onItemSelected1'
+        cellclick: 'onItemSelectedAchievments'
     }
 
 

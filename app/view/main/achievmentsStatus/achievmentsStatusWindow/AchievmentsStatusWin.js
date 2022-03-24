@@ -33,11 +33,11 @@ Ext.define('individualAchievments.view.main.achievmentsStatus.achievmentsStatusW
     buttons: [
         {
             text: 'Добавить',
-            handler: 'addInfo3'
+            handler: 'addInfoAchievmentsStatus'
         },
         {
             text: 'Cancel',
-            handler: 'closeWindow3'
+            handler: 'closeWindowAchievmentsStatus'
         }
     ]
 

@@ -3,7 +3,8 @@ Ext.define('individualAchievments.view.main.achievmentsStatus.achievmentsStatusG
     xtype: 'mainlistStatusGrid',
 
     requires: [
-        'individualAchievments.view.main.achievmentsStatus.AchievmentsStatusController'
+        'individualAchievments.view.main.achievmentsStatus.AchievmentsStatusController',
+        'individualAchievments.view.main.achievmentsstatus.AchievmentsStatusModel'
     ],
 
     store: {
@@ -22,7 +23,7 @@ Ext.define('individualAchievments.view.main.achievmentsStatus.achievmentsStatusG
         }
     ],
     listeners: {
-        cellclick: 'onItemSelected3'
+        cellclick: 'onItemSelectedAchievmentsStatus'
     },
 
 

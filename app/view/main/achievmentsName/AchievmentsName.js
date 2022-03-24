@@ -18,7 +18,7 @@ Ext.define('individualAchievments.view.main.achievmentsName.AchievmentsName', {
             width: 100,
             length: 70,
             margin: 5,
-            handler: 'createWindow2'
+            handler: 'createWindowAchievmentsName'
         },
         {
             xtype: 'mainlistNameGrid'

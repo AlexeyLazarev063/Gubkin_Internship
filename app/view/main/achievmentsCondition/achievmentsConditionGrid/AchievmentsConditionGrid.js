@@ -3,7 +3,8 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsCond
     xtype: 'mainlistCondGrid',
 
     requires: [
-        'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController'
+        'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController',
+        'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionModel'
     ],
 
     store: {
@@ -23,7 +24,7 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsCond
     ],
 
     listeners: {
-        cellclick: 'onItemSelected4'
+        cellclick: 'onItemSelectedAchievmentsCondition'
     }
 
 

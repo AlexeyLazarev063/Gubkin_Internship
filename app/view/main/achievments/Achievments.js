@@ -18,7 +18,7 @@ Ext.define('individualAchievments.view.main.achievments.Achievments', {
             width: 100,
             length: 70,
             margin: 5,
-            handler: 'createWindow1'
+            handler: 'createWindowAchievments'
         },
         {
             xtype: 'mainlistGrid'
