@@ -2,7 +2,7 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsCond
     extend: 'Ext.window.Window',
     xtype: 'ListCondWin',
 
-    require:[
+    require: [
         'individualAchievments.store.achievmentsdatewin',
         'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionModel',
         'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController'
@@ -13,7 +13,7 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsCond
 
     title: 'Condition',
     modal: true,
-    items:[
+    items: [
         {
             xtype: 'textfield',
             margin: 10,
@@ -33,9 +33,7 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsCond
     buttons: [
         {
             text: 'Добавить',
-            handler: function() {
-
-            }
+            handler: 'addInfo4'
         },
         {
             text: 'Cancel',

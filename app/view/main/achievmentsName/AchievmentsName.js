@@ -11,17 +11,14 @@ Ext.define('individualAchievments.view.main.achievmentsName.AchievmentsName', {
     viewModel: 'datewinname',
 
     title: 'Achievment\'s name',
-    items:[
+    items: [
         {
             xtype: 'button',
             text: 'CREATE',
             width: 100,
             length: 70,
             margin: 5,
-            handler: function(){
-                Ext.create('individualAchievments.view.main.achievmentsName.achievmentsNameWindow.AchievmentsNameWin').show()
-
-            }
+            handler: 'createWindow2'
         },
         {
             xtype: 'mainlistNameGrid'

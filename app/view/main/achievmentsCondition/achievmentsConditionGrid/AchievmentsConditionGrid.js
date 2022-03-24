@@ -1,37 +1,32 @@
 Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsConditionGrid.AchievmentsConditionGrid', {
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.grid.Panel',
     xtype: 'mainlistCondGrid',
 
     requires: [
-        'individualAchievments.view.main.achievmentsCondition.AchievmentsCondition',
         'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController'
     ],
 
-    items:[
+    store: {
+        type: 'personnel'
+    },
+
+    columns: [
         {
-            xtype: 'grid',
-
-            store:{
-                type: 'personnel'
-            },
-
-            columns: [
-                {
-                    text: 'ID',
-                    dataIndex: 'id'
-                },
-                {
-                    text: 'Condition',
-                    dataIndex: 'condition',
-                    flex: 1
-                }
-            ],
-
-            listeners: {
-                cellclick: 'onItemSelected4'
-            },
+            text: 'ID',
+            dataIndex: 'id'
+        },
+        {
+            text: 'Condition',
+            dataIndex: 'condition',
+            flex: 1
         }
     ],
+
+    listeners: {
+        cellclick: 'onItemSelected4'
+    }
+
+
 
 
 });

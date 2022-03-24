@@ -8,19 +8,17 @@ Ext.define('individualAchievments.view.main.achievmentsStatus.AchievmentsStatus'
     ],
 
     controller: 'achievmentsStatus',
-    viewModel:'datewinstatus',
+    viewModel: 'datewinstatus',
 
     title: 'Achievment\'s status',
-    items:[
+    items: [
         {
             xtype: 'button',
             text: 'CREATE',
             width: 100,
             length: 70,
             margin: 5,
-            handler: function(){
-                Ext.create('individualAchievments.view.main.achievmentsStatus.achievmentsStatusWindow.AchievmentsStatusWin').show()
-            }
+            handler: 'createWindow3'
         },
         {
             xtype: 'mainlistStatusGrid'

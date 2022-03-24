@@ -2,8 +2,7 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.Achiev
     extend: 'Ext.window.Window',
     xtype: 'ListWin',
 
-    require:[
-        'individualAchievments.store.achievmentsdatewin',
+    require: [
         'individualAchievments.view.main.achievments.AchievmentsModel',
         'individualAchievments.view.main.achievments.AchievmentsController'
     ],
@@ -13,7 +12,7 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.Achiev
 
     title: 'Achievments',
     modal: true,
-    items:[
+    items: [
         {
             xtype: 'combo',
             fieldLabel:'Наименование достижения',
@@ -64,9 +63,7 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.Achiev
     buttons: [
         {
             text: 'Добавить',
-            handler: function() {
-
-            }
+            handler: 'addInfo1'
         },
         {
             text: 'Cancel',

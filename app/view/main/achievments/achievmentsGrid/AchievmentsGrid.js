@@ -1,54 +1,50 @@
 Ext.define('individualAchievments.view.main.achievmentsGrid.AchievmentsGrid', {
-    extend: 'Ext.panel.Panel',
+    extend: 'Ext.grid.Panel',
     xtype: 'mainlistGrid',
 
     requires: [
-        'individualAchievments.view.main.achievments.Achievments',
         'individualAchievments.view.main.achievments.AchievmentsController'
     ],
 
-    items:[
+    store: {
+        type: 'personnel'
+    },
+
+    columns: [
         {
-            xtype:'grid',
-            store: {
-                type: 'personnel'
-            },
-            columns: [
-                {
-                    text: 'ID',
-                    dataIndex: 'id'
-                },
-                {
-                    text: 'Achievment\'s name',
-                    dataIndex: 'name',
-                    flex: 1
-                },
-                {
-                    text: 'Condition',
-                    dataIndex: 'condition',
-                    flex: 1,
-                    menuDisabled:true
-                },
-                {
-                    text: 'Status',
-                    dataIndex: 'status',
-                    flex: 1,
-                    menuDisabled:true
-                },
-                {
-                    text: 'Description',
-                    dataIndex: 'description',
-                    flex: 1,
-                    menuDisabled:true
-                },
-                {
-                    menuDisabled:true
-                }
-            ],
-            listeners: {
-                cellclick: 'onItemSelected1'
-            },
+            text: 'ID',
+            dataIndex: 'id'
+        },
+        {
+            text: 'Achievment\'s name',
+            dataIndex: 'name',
+            flex: 1
+        },
+        {
+            text: 'Condition',
+            dataIndex: 'condition',
+            flex: 1,
+            menuDisabled:true
+        },
+        {
+            text: 'Status',
+            dataIndex: 'status',
+            flex: 1,
+            menuDisabled:true
+        },
+        {
+            text: 'Description',
+            dataIndex: 'description',
+            flex: 1,
+            menuDisabled:true
+        },
+        {
+            menuDisabled:true
         }
     ],
+    listeners: {
+        cellclick: 'onItemSelected1'
+    }
+
 
 });

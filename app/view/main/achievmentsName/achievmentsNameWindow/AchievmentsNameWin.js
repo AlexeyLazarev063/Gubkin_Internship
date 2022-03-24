@@ -2,18 +2,18 @@ Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameWindo
     extend: 'Ext.window.Window',
     xtype: 'ListNameWin',
 
-    require:[
+    require: [
         'individualAchievments.store.achievmentsdatewin',
         "individualAchievments.view.main.achievmentsName.AchievmentsNameModel",
         'individualAchievments.view.main.achievmentsName.AchievmentsNameController'
     ],
 
-    viewModel: "datewinname",
+    viewModel: 'datewinname',
     controller: 'achievmentsName',
 
     title: 'Achievment\'s name',
     modal: true,
-    items:[
+    items: [
         {
             xtype: 'textfield',
             width: 600,
@@ -28,20 +28,17 @@ Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameWindo
             bind: {
                 value: '{achievments.name}'
             }
-
-
         }
     ],
-    buttons: [{
-
-        text: 'Добавить',
-        handler: function() {
-
-
+    buttons: [
+        {
+            text: 'Добавить',
+            handler: 'addInfo2'
+        },
+        {
+            text: 'Cancel',
+            handler: 'closeWindow2'
         }
-    },{
-        text: 'Cancel',
-        handler: 'closeWindow2'
-    }]
+    ]
 
 });
