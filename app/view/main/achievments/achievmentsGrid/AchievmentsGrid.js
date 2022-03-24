@@ -46,7 +46,6 @@ Ext.define('individualAchievments.view.main.achievmentsGrid.AchievmentsGrid', {
             items: [
                 {
                     xtype: 'button',
-                    text: 'h',
                     iconCls: 'fa-trash-o',
                     handler: 'deleteInfoAchievments'
                 }
