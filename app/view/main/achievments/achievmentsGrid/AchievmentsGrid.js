@@ -40,7 +40,17 @@ Ext.define('individualAchievments.view.main.achievmentsGrid.AchievmentsGrid', {
             menuDisabled:true
         },
         {
-            menuDisabled:true
+            xtype: 'actioncolumn',
+            text: 'DELETE',
+            align: 'center',
+            items: [
+                {
+                    xtype: 'button',
+                    text: 'h',
+                    iconCls: 'fa-trash-o',
+                    handler: 'deleteInfoAchievments'
+                }
+            ],
         }
     ],
     listeners: {

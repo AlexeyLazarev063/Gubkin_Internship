@@ -24,6 +24,10 @@ Ext.define('individualAchievments.view.main.achievments.AchievmentsController', 
 
     addInfoAchievments: function() {
 
+    },
+
+    deleteInfoAchievments: function() {
+
     }
 
 });
