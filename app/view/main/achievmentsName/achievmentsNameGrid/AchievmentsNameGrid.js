@@ -1,29 +1,34 @@
 Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameGrid.AchievmentsNameGrid', {
     extend: 'Ext.grid.Panel',
     xtype: 'mainlistNameGrid',
+    itemId: 'AchievmentsNameGrid',
 
     requires: [
         'individualAchievments.view.main.achievmentsName.AchievmentsNameController',
         'individualAchievments.view.main.achievmentsname.AchievmentsNameModel'
     ],
 
-    store: {
-        type: 'personnel'
-    },
+    store: 'individualAchievments.store.AchievmentsDateName',
 
     columns: [
         {
+            xtype:'rownumberer',
+        },
+        {
             text: 'ID',
-            dataIndex: 'id'
+            dataIndex: 'AchievmentsNameId',
+
         },
         {
             text: 'Name',
-            dataIndex: 'name',
+            dataIndex: 'AchievmentsName',
             flex: 1
         }
     ],
+
     listeners: {
-        cellclick: 'onItemSelectedAchievmentsName'
+
+        cellclick: 'onItemSelectedAchievmentsName',
     }
 
 });

@@ -2,28 +2,91 @@ Ext.define('individualAchievments.view.main.achievmentsStatus.AchievmentsStatusC
     extend: 'Ext.app.ViewController',
     alias: 'controller.achievmentsStatus',
 
-    onItemSelectedAchievmentsStatus: function (item) {
-        let gridRecords = item.getSelectionModel().getSelection()[0];
+    onItemSelectedAchievmentsStatus: function (grid) {
+        let gridRecords = grid.getSelectionModel().getSelection()[0].data;
+        gridRecords['update'] = false;
+        gridRecords['create'] = true;
+        gridRecords['delete'] = false;
 
         Ext.create('individualAchievments.view.main.achievmentsStatus.achievmentsStatusWindow.AchievmentsStatusWin', {
             viewModel: {
                 data: {
-                    achievments: gridRecords.data
+                    achievments: gridRecords
                 }
             }
         }).show()
     },
 
-    closeWindowAchievmentsStatus: function(item) {
-        item.up("window").close();
+    closeWindowAchievmentsStatus: function(grid) {
+        grid.up('#AchievmentsStatusWin').close();
     },
 
     createWindowAchievmentsStatus: function() {
-        Ext.create('individualAchievments.view.main.achievmentsStatus.achievmentsStatusWindow.AchievmentsStatusWin').show()
+        let gridRecords = {
+            'update': true,
+            'create': false,
+            'delete': true,
+        };
+
+        Ext.create('individualAchievments.view.main.achievmentsStatus.achievmentsStatusWindow.AchievmentsStatusWin',{
+            viewModel: {
+                data: {
+                    achievments: gridRecords
+                }
+            }
+        }).show()
     },
 
-    addInfoAchievmentsStatus: function() {
+    addInfoAchievmentsStatus: function(grid) {
+        var newStatus = Ext.ComponentQuery.query('textfield[name = "achievmentsStatusField"]')[0].getValue();
 
+        Ext.Ajax.request({
+            url: `http://127.0.0.1:8000/List/createStatus`,
+            params:{
+                newStatus: newStatus
+            },
+            success: function(){
+                Ext.ComponentQuery.query('#AchievmentsStatusGrid')[0].getStore().reload();
+
+            }
+        });
+        grid.up("#AchievmentsStatusWin").close();
+    },
+
+    deleteInfoAchievmentsStatus: function(grid, rowIndex, colIndex){
+
+        let id = grid.up('#AchievmentsStatusWin').getViewModel().get('achievments').AchievmentsStatusId;
+
+        Ext.Ajax.request({
+            url: `http://127.0.0.1:8000/List/deleteStatus`,
+            params:{
+                id: id
+            },
+            success: function(){
+                Ext.ComponentQuery.query('#AchievmentsStatusGrid')[0].getStore().reload();
+
+            }
+        });
+        grid.up("#AchievmentsStatusWin").close();
+    },
+
+    updateInfoAchievmentsStatus: function(grid, rowIndex, colIndex){
+
+        let id = grid.up('#AchievmentsStatusWin').getViewModel().get('achievments').AchievmentsStatusId;
+        let newName = Ext.ComponentQuery.query('textfield[name = "achievmentsStatusField"]')[0].getValue();
+
+        Ext.Ajax.request({
+            url: `http://127.0.0.1:8000/List/createStatus`,
+            params:{
+                id: id,
+                newStatus: newName
+            },
+            success: function(){
+                Ext.ComponentQuery.query('#AchievmentsStatusGrid')[0].getStore().reload();
+
+            }
+        });
+        grid.up("#AchievmentsStatusWin").close();
     }
 
 });

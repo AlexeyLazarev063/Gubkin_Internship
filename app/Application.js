@@ -16,8 +16,10 @@ Ext.define('individualAchievments.Application', {
     },
 
     stores: [
-        'individualAchievments.store.achievmentsdatewin',
-        'individualAchievments.store.Personnel'
+        'individualAchievments.store.AchievmentsDateName',
+        'individualAchievments.store.Personnel',
+        'individualAchievments.store.AchievmentsDateStatus',
+        'individualAchievments.store.AchievmentsDateCondition'
     ],
 
 });

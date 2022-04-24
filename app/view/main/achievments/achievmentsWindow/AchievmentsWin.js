@@ -1,6 +1,7 @@
 Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.AchievmentsWin', {
     extend: 'Ext.window.Window',
     xtype: 'ListWin',
+    itemId: 'AchievmentsWin',
 
     require: [
         'individualAchievments.view.main.achievments.AchievmentsModel',
@@ -18,36 +19,39 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.Achiev
             fieldLabel:'Наименование достижения',
             width: 700,
             margin:10,
-            store: 'individualAchievments.store.achievmentsdatewin',
-            valueField: 'id',
-            displayField: 'name',
+            name: 'achievmentsNField',
+            store: 'individualAchievments.store.AchievmentsDateName',
+            valueField: 'AchievmentsName',
+            displayField: 'AchievmentsName',
             bind: {
-                value: '{achievments.name}'
+                value: '{achievments.AchievmentsNameMain}'
             }
 
-        },
-        {
-            xtype: 'combo',
-            fieldLabel:'Статус достижения',
-            width: 700,
-            margin:10,
-            store: 'individualAchievments.store.achievmentsdatewin',
-            valueField: 'id',
-            displayField: 'status',
-            bind: {
-                value: '{achievments.status}'
-            }
         },
         {
             xtype: 'combo',
             fieldLabel:'Условие достижения',
             width: 700,
             margin:10,
-            store: 'individualAchievments.store.achievmentsdatewin',
-            valueField: 'id',
-            displayField: 'condition',
+            name: 'achievmentsCField',
+            store: 'individualAchievments.store.AchievmentsDateCondition',
+            valueField: 'AchievmentsCondition',
+            displayField: 'AchievmentsCondition',
             bind: {
-                value: '{achievments.condition}'
+                value: '{achievments.AchievmentsConditionMain}'
+            }
+        },
+        {
+            xtype: 'combo',
+            fieldLabel:'Статус достижения',
+            width: 700,
+            margin:10,
+            name: 'achievmentsSField',
+            store: 'individualAchievments.store.AchievmentsDateStatus',
+            valueField: 'AchievmentsStatus',
+            displayField: 'AchievmentsStatus',
+            bind: {
+                value: '{achievments.AchievmentsStatusMain}'
             }
         },
         {
@@ -55,15 +59,36 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.Achiev
             fieldLabel:'Описание',
             labelAlign: 'top',
             margin: 10,
-            width:700
+            width:700,
+            name: 'achievmentsDField',
+            bind: {
+                value: '{achievments.AchievmentsDescriptionMain}'
+            }
 
         }
     ],
 
     buttons: [
         {
+            text: 'Удалить',
+            handler: 'deleteInfoAchievments',
+            bind:{
+                hidden: '{achievments.delete}',
+            }
+        },
+        {
+            text: 'Обновить',
+            handler: 'updateInfoAchievments',
+            bind:{
+                hidden: '{achievments.update}',
+            }
+        },
+        {
             text: 'Добавить',
-            handler: 'addInfoAchievments'
+            handler: 'addInfoAchievments',
+            bind:{
+                hidden: '{achievments.create}',
+            }
         },
         {
             text: 'Cancel',

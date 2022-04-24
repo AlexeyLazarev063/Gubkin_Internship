@@ -1,6 +1,7 @@
 Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsConditionWindow.AchievmentsConditionWin', {
     extend: 'Ext.window.Window',
     xtype: 'ListCondWin',
+    itemId: 'AchievmentsConditionWin',
 
     require: [
         'individualAchievments.store.achievmentsdatewin',
@@ -19,21 +20,38 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsCond
             margin: 10,
             width: 600,
             height: 50,
-            store: 'individualAchievments.store.achievmentsdatewin',
+            name: 'AchievmentsConditionField',
             valueField: 'id',
             displayField: 'name',
             fieldLabel:'Условие',
             labelAlign: 'top',
-            emptytext: 'Введите текст',
+            emptyText: 'Введите текст',
             bind: {
-                value: '{achievments.condition}'
+                value: '{achievments.AchievmentsCondition}'
             }
         }
     ],
     buttons: [
         {
+            text: 'Удалить',
+            handler: 'deleteInfoAchievmentsCondition',
+            bind:{
+                hidden: '{achievments.delete}',
+            }
+        },
+        {
+            text: 'Обновить',
+            handler: 'updateInfoAchievmentsCondition',
+            bind:{
+                hidden: '{achievments.update}',
+            }
+        },
+        {
             text: 'Добавить',
-            handler: 'addInfoAchievmentsCondition'
+            handler: 'addInfoAchievmentsCondition',
+            bind:{
+                hidden: '{achievments.create}',
+            }
         },
         {
             text: 'Cancel',
