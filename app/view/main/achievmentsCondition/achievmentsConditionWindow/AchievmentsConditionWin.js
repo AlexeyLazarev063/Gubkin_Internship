@@ -6,11 +6,12 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsCond
     require: [
         'individualAchievments.store.achievmentsdatewin',
         'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionModel',
-        'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController'
+        'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController',
+        'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionWindowController'
     ],
 
     viewModel: 'datewincond',
-    controller: 'achievmentsCond',
+    controller: 'achievmentsCondWindow',
 
     title: 'Condition',
     modal: true,

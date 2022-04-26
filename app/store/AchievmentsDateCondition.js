@@ -1,13 +1,7 @@
 Ext.define('individualAchievments.store.AchievmentsDateCondition', {
-
     extend: 'Ext.data.Store',
-
     alias: 'store.achievmentsdatecondition',
-
-     fields: [
-         {name: 'AchievmentsConditionId', type: 'int'},
-         {name: 'AchievmentsCondition', type: 'string'}
-     ],
+    model: 'individualAchievments.app.model.AchievmentsDateConditionModel',
 
     proxy: {
         type: 'ajax',

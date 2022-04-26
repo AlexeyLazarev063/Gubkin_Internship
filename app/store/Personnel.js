@@ -1,15 +1,7 @@
 Ext.define('individualAchievments.store.Personnel', {
     extend: 'Ext.data.Store',
-
     alias: 'store.personnel',
-
-    fields: [
-        {name: 'AchievmentsId', type: 'int'},
-        {name: 'AchievmentsNameMain', type: 'string'},
-        {name: 'AchievmentsStatusMain', type: 'string'},
-        {name: 'AchievmentsConditionMain', type: 'string'},
-        {name: 'AchievmentsDescriptionMain', type: 'string'}
-    ],
+    model: 'individualAchievments.app.model.PersonnelModel',
 
     proxy: {
         type: 'ajax',

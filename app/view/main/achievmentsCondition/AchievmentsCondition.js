@@ -4,6 +4,7 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.AchievmentsCond
 
     requires: [
         'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController',
+        'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionWindowController',
         'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionModel'
     ],
 

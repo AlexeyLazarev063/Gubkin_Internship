@@ -67,138 +67,120 @@ class MainService
         return $AchievmentsMainDot;
     }
 
-    public function create_AchievmentsName($name)
+    public function createAchievmentsName($name)
     {
 
-        if(array_key_exists('id', $name)){
-
-            $achievments_name = $this->entityManager->getRepository(AchievmentsNameEntity::class)->find($name['id']);
-
-            $achievments_name->setAchievmentsName($name['newName']);
-            $this->entityManager->flush();
-
+        if(!empty($name->AchievmentsNameId)){
+            $achievmentsName = $this->entityManager->getRepository(AchievmentsNameEntity::class)->find($name->AchievmentsNameId);
         } else {
-
-            $achievments_name = new AchievmentsNameEntity();
-            $achievments_name->setAchievmentsName($name['newName']);
-
-            $this->entityManager->persist($achievments_name);
-            $this->entityManager->flush();
+            $achievmentsName = new AchievmentsNameEntity();
         }
 
-        return $achievments_name;
-    }
-
-    public function create_AchievmentsStatus($status)
-    {
-        if(array_key_exists('id', $status)){
-
-            $achievments_status = $this->entityManager->getRepository(AchievmentsStatusEntity::class)->find($status['id']);
-
-            $achievments_status->setAchievmentsStatus($status['newStatus']);
-            $this->entityManager->flush();
-
-        } else {
-
-            $achievments_status = new AchievmentsStatusEntity();
-            $achievments_status->setAchievmentsStatus($status['newStatus']);
-
-            $this->entityManager->persist($achievments_status);
-            $this->entityManager->flush();
-
+        foreach ($name as $key => $value) {
+            if ($key === 'AchievmentsNameId')continue;
+            $achievmentsName->{'set' . $key}($name->{$key});
         }
 
+        $this->entityManager->persist($achievmentsName);
+        $this->entityManager->flush();
 
-
-        return $achievments_status;
+        return $achievmentsName;
     }
 
-    public function create_AchievmentsCondition($condition)
+    public function createAchievmentsStatus($status)
     {
-        if(array_key_exists('id', $condition)){
-
-            $achievments_condition = $this->entityManager->getRepository(AchievmentsConditionEntity::class)->find($condition['id']);
-
-            $achievments_condition->setAchievmentsCondition($condition['newCondition']);
-            $this->entityManager->flush();
-
+        if(!empty($status->AchievmentsStatusId)){
+            $achievmentsStatus = $this->entityManager->getRepository(AchievmentsStatusEntity::class)->find($status->AchievmentsStatusId);
         } else {
-
-            $achievments_condition = new AchievmentsConditionEntity();
-            $achievments_condition->setAchievmentsCondition($condition['newCondition']);
-
-            $this->entityManager->persist($achievments_condition);
-            $this->entityManager->flush();
+            $achievmentsStatus = new AchievmentsStatusEntity();
         }
 
-        return $achievments_condition;
-    }
-
-    public function create_Achievments($achievments_full)
-    {
-        if(array_key_exists('id', $achievments_full)){
-
-            $achievments = $this->entityManager->getRepository(AchievmentsEntity::class)->find($achievments_full['id']);
-
-            $achievments->setAchievmentsNameMain($achievments_full['newAchievmentsName']);
-            $achievments->setAchievmentsStatusMain($achievments_full['newAchievmentsStatus']);
-            $achievments->setAchievmentsConditionMain($achievments_full['newAchievmentsCondition']);
-            $achievments->setAchievmentsDescriptionMain($achievments_full['newAchievmentsDescription']);
-
-            $this->entityManager->flush();
-
-        } else {
-
-            $achievments = new AchievmentsEntity();
-            $achievments->setAchievmentsNameMain($achievments_full['newAchievmentsName']);
-            $achievments->setAchievmentsStatusMain($achievments_full['newAchievmentsStatus']);
-            $achievments->setAchievmentsConditionMain($achievments_full['newAchievmentsCondition']);
-            $achievments->setAchievmentsDescriptionMain($achievments_full['newAchievmentsDescription']);
-
-            $this->entityManager->persist($achievments);
-            $this->entityManager->flush();
+        foreach ($status as $key => $value) {
+            if ($key === 'AchievmentsStatusId')continue;
+            $achievmentsStatus->{'set' . $key}($status->{$key});
         }
 
-        return $achievments;
+        $this->entityManager->persist($achievmentsStatus);
+        $this->entityManager->flush();
+
+        return $achievmentsStatus;
     }
 
-    public function delete_AchievmentsName(int $id)
+    public function createAchievmentsCondition($condition)
     {
-        $d_AchievmentsName = $this->entityManager->getRepository(AchievmentsNameEntity::class)->find($id);
+        if(!empty($condition->AchievmentsConditionId)){
+            $achievmentsCondition = $this->entityManager->getRepository(AchievmentsConditionEntity::class)->find($condition->AchievmentsConditionId);
+        } else {
+            $achievmentsCondition = new AchievmentsConditionEntity();
+        }
 
-        $this->entityManager->remove($d_AchievmentsName);
+        foreach ($condition as $key => $value) {
+            if ($key === 'AchievmentsConditionId')continue;
+            $achievmentsCondition->{'set' . $key}($condition->{$key});
+        }
+
+        $this->entityManager->persist($achievmentsCondition);
+        $this->entityManager->flush();
+
+        return $achievmentsCondition;
+    }
+
+    public function createAchievments($achievments_full)
+    {
+        if(!empty($achievments_full->AchievmentsId)){
+            $achievmentsAll = $this->entityManager->getRepository(AchievmentsEntity::class)->find($achievments_full->AchievmentsId);
+        } else {
+            $achievmentsAll = new AchievmentsEntity();
+        }
+        foreach ($achievments_full as $key => $value) {
+            if ($key === 'AchievmentsId')continue;
+            $achievmentsAll->{'set' . $key}($achievments_full->{$key});
+        }
+
+        $this->entityManager->persist($achievmentsAll);
+        $this->entityManager->flush();
+
+        return $achievmentsAll;
+    }
+
+    public function deleteAchievmentsName(int $id)
+    {
+        $delAchievmentsName = $this->entityManager->getRepository(AchievmentsNameEntity::class)->find($id);
+
+        $this->entityManager->remove($delAchievmentsName);
         $this->entityManager->flush();
 
         return null;
     }
 
-    public function delete_AchievmentsStatus(int $id)
+    public function deleteAchievmentsStatus(int $id)
     {
-        $d_AchievmentsStatus = $this->entityManager->getRepository(AchievmentsStatusEntity::class)->find($id);
+        $delAchievmentsStatus = $this->entityManager->getRepository(AchievmentsStatusEntity::class)->find($id);
 
-        $this->entityManager->remove($d_AchievmentsStatus);
+        $this->entityManager->remove($delAchievmentsStatus);
         $this->entityManager->flush();
 
         return null;
     }
 
-    public function delete_AchievmentsCondition(int $id)
+    public function deleteAchievmentsCondition(int $id)
     {
-        $d_AchievmentsCondition = $this->entityManager->getRepository(AchievmentsConditionEntity::class)->find($id);
+        $delAchievmentsCondition = $this->entityManager->getRepository(AchievmentsConditionEntity::class)->find($id);
 
-        $this->entityManager->remove($d_AchievmentsCondition);
+        $this->entityManager->remove($delAchievmentsCondition);
         $this->entityManager->flush();
 
         return null;
     }
 
-    public function delete_Achievments(int $id)
+    public function deleteAchievments(int $id)
     {
-        $d_Achievments = $this->entityManager->getRepository(AchievmentsEntity::class)->find($id);
+        $delAchievments = $this->entityManager->getRepository(AchievmentsEntity::class)->find($id);
 
-        $this->entityManager->remove($d_Achievments);
+        $this->entityManager->remove($delAchievments);
         $this->entityManager->flush();
 
         return null;
     }
+
 }

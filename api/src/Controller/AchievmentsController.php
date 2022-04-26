@@ -2,8 +2,14 @@
 
 namespace App\Controller;
 
+use App\Dto\AchievmentsConditionDto;
+use App\Dto\AchievmentsDto;
+use App\Dto\AchievmentsNameDto;
+use App\Dto\AchievmentsStatusDto;
 use App\Entity\AchievmentsEntity;
 use App\Service\MainService;
+use App\Service\ValidateService;
+use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,9 +19,12 @@ class AchievmentsController extends AbstractController
 {
     private MainService $mainService;
 
-    public function __construct(MainService $mainService)
+    private ValidateService $validateService;
+
+    public function __construct(MainService $mainService, ValidateService $validateService)
     {
         $this->mainService = $mainService;
+        $this->validateService = $validateService;
     }
 
     /**
@@ -57,45 +66,69 @@ class AchievmentsController extends AbstractController
     /**
      * @Route("List/createName")
      */
-    public function create_AchievmentsName():Response
+    public function createAchievmentsName():Response
     {
-        $achievments_name = $this->mainService->create_AchievmentsName($_POST);
-        return new JsonResponse($achievments_name);
+        try{
+            $this->validateService->validate($_POST, AchievmentsNameDto::class, ['AchievmentsNameId']);
+        }catch(Exception $exception){
+            die($exception->getMessage());
+        }
+        $dtoAchievmentsName = $this->toDto($_POST, AchievmentsNameDto::class);
+        $achievmentsName = $this->mainService->createAchievmentsName($dtoAchievmentsName);
+        return new JsonResponse($achievmentsName);
     }
 
     /**
      * @Route("List/createStatus")
      */
-    public function create_AchievmentsStatus():Response
+    public function createAchievmentsStatus():Response
     {
-        $achievments_status = $this->mainService->create_AchievmentsStatus($_POST);
-        return new JsonResponse($achievments_status);
+        try{
+            $this->validateService->validate($_POST, AchievmentsStatusDto::class, ['AchievmentsStatusId']);
+        }catch(Exception $exception){
+            die($exception->getMessage());
+        }
+        $dtoAchievmentsStatus = $this->toDto($_POST, AchievmentsStatusDto::class);
+        $achievmentsStatus = $this->mainService->createAchievmentsStatus($dtoAchievmentsStatus);
+        return new JsonResponse($achievmentsStatus);
     }
 
     /**
      * @Route("List/createCondition")
      */
-    public function create_AchievmentsCondition():Response
+    public function createAchievmentsCondition():Response
     {
-        $achievments_condition = $this->mainService->create_AchievmentsCondition($_POST);
-        return new JsonResponse($achievments_condition);
+        try{
+            $this->validateService->validate($_POST, AchievmentsConditionDto::class, ['AchievmentsConditionId']);
+        }catch(Exception $exception){
+            die($exception->getMessage());
+        }
+        $dtoAchievmentsCondition = $this->toDto($_POST, AchievmentsConditionDto::class);
+        $achievmentsCondition = $this->mainService->createAchievmentsCondition($dtoAchievmentsCondition);
+        return new JsonResponse($achievmentsCondition);
     }
 
     /**
      * @Route("List/createAchievments")
      */
-    public function create_Achievments():Response
+    public function createAchievments():Response
     {
-        $achievments_all = $this->mainService->create_Achievments($_POST);
-        return new JsonResponse($achievments_all);
+        try{
+            $this->validateService->validate($_POST, AchievmentsDto::class, ['AchievmentsId']);
+        }catch(Exception $exception){
+            die($exception->getMessage());
+        }
+        $dtoAchievments = $this->toDto($_POST, AchievmentsDto::class);
+        $achievmentsAll = $this->mainService->createAchievments($dtoAchievments);
+        return new JsonResponse($achievmentsAll);
     }
 
     /**
      * @Route("List/deleteName")
      */
-    public function delete_AchievmentsName(): Response
+    public function deleteAchievmentsName(): Response
     {
-        $d_AchievmentsName = $this->mainService->delete_AchievmentsName($_POST['id']);
+        $delAchievmentsName = $this->mainService->deleteAchievmentsName($_POST['AchievmentsNameId']);
 
         return new Response();
     }
@@ -103,9 +136,9 @@ class AchievmentsController extends AbstractController
     /**
      * @Route("List/deleteStatus")
      */
-    public function delete_AchievmentsStatus(): Response
+    public function deleteAchievmentsStatus(): Response
     {
-        $d_AchievmentsStatus = $this->mainService->delete_AchievmentsStatus($_POST['id']);
+        $delAchievmentsStatus = $this->mainService->deleteAchievmentsStatus($_POST['AchievmentsStatusId']);
 
         return new Response();
     }
@@ -113,9 +146,9 @@ class AchievmentsController extends AbstractController
     /**
      * @Route("List/deleteCondition")
      */
-    public function delete_AchievmentsCondition(): Response
+    public function deleteAchievmentsCondition(): Response
     {
-        $d_AchievmentsCondition = $this->mainService->delete_AchievmentsCondition($_POST['id']);
+        $delAchievmentsCondition = $this->mainService->deleteAchievmentsCondition($_POST['AchievmentsConditionId']);
 
         return new Response();
     }
@@ -123,11 +156,20 @@ class AchievmentsController extends AbstractController
     /**
      * @Route("List/deleteAchievments")
      */
-    public function delete_Achievments(): Response
+    public function deleteAchievments(): Response
     {
-        $d_Achievments = $this->mainService->delete_Achievments($_POST['id']);
+        $delAchievments = $this->mainService->deleteAchievments($_POST['AchievmentsId']);
 
         return new Response();
+    }
+
+    private function toDto($data, $dtoAlias)
+    {
+        $dto = new $dtoAlias();
+        foreach ($data as $propertyAlias => $value){
+            $dto->{$propertyAlias} = $value;
+        }
+        return $dto;
     }
 
 }

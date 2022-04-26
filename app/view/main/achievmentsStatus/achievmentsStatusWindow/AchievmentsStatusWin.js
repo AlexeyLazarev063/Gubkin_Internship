@@ -6,11 +6,12 @@ Ext.define('individualAchievments.view.main.achievmentsStatus.achievmentsStatusW
     require: [
         'individualAchievments.store.achievmentsdatewin',
         'individualAchievments.view.main.achievmentsStatus.achievmentsStatusModel',
-        'individualAchievments.view.main.achievmentsStatus.AchievmentsStatusController'
+        'individualAchievments.view.main.achievmentsStatus.AchievmentsStatusController',
+        'individualAchievments.view.main.achievmentsStatus.AchievmentsStatusWindowController'
     ],
 
     viewModel: 'datewinstatus',
-    controller: 'achievmentsStatus',
+    controller: 'achievmentsStatusWindow',
 
     title: 'Status',
     modal: true,

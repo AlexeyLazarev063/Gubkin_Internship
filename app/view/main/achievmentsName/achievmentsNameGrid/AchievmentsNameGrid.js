@@ -2,6 +2,7 @@ Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameGrid.
     extend: 'Ext.grid.Panel',
     xtype: 'mainlistNameGrid',
     itemId: 'AchievmentsNameGrid',
+    id: 'AchievmentsNameGridId',
 
     requires: [
         'individualAchievments.view.main.achievmentsName.AchievmentsNameController',

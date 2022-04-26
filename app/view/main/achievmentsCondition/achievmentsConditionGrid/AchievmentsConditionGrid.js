@@ -2,6 +2,7 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsCond
     extend: 'Ext.grid.Panel',
     xtype: 'mainlistCondGrid',
     itemId: 'AchievmentsConditionGrid',
+    id: 'AchievmentsConditionGridId',
 
     requires: [
         'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController',

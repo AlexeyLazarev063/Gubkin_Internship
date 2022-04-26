@@ -1,13 +1,7 @@
 Ext.define('individualAchievments.store.AchievmentsDateName', {
-
     extend: 'Ext.data.Store',
-
     alias: 'store.achievmentsdatewin',
-
-    fields: [
-        {name: 'AchievmentsNameId', type: 'int'},
-        {name: 'AchievmentsName', type: 'string'}
-    ],
+    model:'individualAchievments.app.model.AchievmentsDateNameModel',
 
     proxy: {
         type: 'ajax',

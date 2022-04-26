@@ -4,6 +4,7 @@ Ext.define('individualAchievments.view.main.achievmentsStatus.AchievmentsStatus'
 
     requires: [
         'individualAchievments.view.main.achievmentsStatus.AchievmentsStatusController',
+        'individualAchievments.view.main.achievmentsStatus.AchievmentsStatusWindowController',
         'individualAchievments.view.main.achievmentsstatus.AchievmentsStatusModel'
     ],
 

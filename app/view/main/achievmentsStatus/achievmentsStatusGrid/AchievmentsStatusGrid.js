@@ -2,6 +2,7 @@ Ext.define('individualAchievments.view.main.achievmentsStatus.achievmentsStatusG
     extend: 'Ext.grid.Panel',
     xtype: 'mainlistStatusGrid',
     itemId: 'AchievmentsStatusGrid',
+    id: 'AchievmentsStatusGridId',
 
     requires: [
         'individualAchievments.view.main.achievmentsStatus.AchievmentsStatusController',

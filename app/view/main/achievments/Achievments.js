@@ -4,6 +4,7 @@ Ext.define('individualAchievments.view.main.achievments.Achievments', {
 
     requires: [
         "individualAchievments.view.main.achievments.AchievmentsController",
+        'individualAchievments.view.main.achievments.AchievmentsWindowController',
         'individualAchievments.view.main.achievments.AchievmentsModel'
     ],
 

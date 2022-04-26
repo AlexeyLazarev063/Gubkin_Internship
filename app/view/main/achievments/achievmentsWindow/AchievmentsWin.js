@@ -5,11 +5,12 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.Achiev
 
     require: [
         'individualAchievments.view.main.achievments.AchievmentsModel',
-        'individualAchievments.view.main.achievments.AchievmentsController'
+        'individualAchievments.view.main.achievments.AchievmentsController',
+        'individualAchievments.view.main.achievments.AchievmentsWindowController'
     ],
 
     viewmodel: 'datewin',
-    controller: 'achievments',
+    controller: 'achievmentsWindow',
 
     title: 'Achievments',
     modal: true,
@@ -26,7 +27,6 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.Achiev
             bind: {
                 value: '{achievments.AchievmentsNameMain}'
             }
-
         },
         {
             xtype: 'combo',
@@ -64,7 +64,6 @@ Ext.define('individualAchievments.view.main.achievments.achievmentsWindow.Achiev
             bind: {
                 value: '{achievments.AchievmentsDescriptionMain}'
             }
-
         }
     ],
 

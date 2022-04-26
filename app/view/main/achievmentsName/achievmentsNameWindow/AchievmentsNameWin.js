@@ -6,11 +6,12 @@ Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameWindo
     require: [
         'individualAchievments.store.achievmentsdatewin',
         "individualAchievments.view.main.achievmentsName.AchievmentsNameModel",
-        'individualAchievments.view.main.achievmentsName.AchievmentsNameController'
+        'individualAchievments.view.main.achievmentsName.AchievmentsNameController',
+        'individualAchievments.view.main.achievmentsName.AchievmentsNameWindowController'
     ],
 
     viewModel: 'datewinname',
-    controller: 'achievmentsName',
+    controller: 'achievmentsNameWindow',
 
     title: 'Achievment\'s name',
     modal: true,
