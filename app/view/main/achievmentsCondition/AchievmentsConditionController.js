@@ -2,29 +2,35 @@ Ext.define('individualAchievments.view.main.achievmentsCondition.AchievmentsCond
     extend: 'Ext.app.ViewController',
     alias: 'controller.achievmentsCond',
 
-    onItemSelectedAchievmentsCondition: function (item) {
-
-        let gridRecords = item.getSelectionModel().getSelection()[0];
+    onItemSelectedAchievmentsCondition: function (grid) {
+        let gridRecords = grid.getSelectionModel().getSelection()[0].data;
+        gridRecords['update'] = false;
+        gridRecords['create'] = true;
+        gridRecords['delete'] = false;
 
         Ext.create('individualAchievments.view.main.achievmentsCondition.achievmentsConditionWindow.AchievmentsConditionWin', {
             viewModel: {
                 data: {
-                    achievments: gridRecords.data
+                    achievments: gridRecords
                 }
             }
         }).show()
     },
 
-    closeWindowAchievmentsCondition: function(item) {
-        item.up("window").close();
-    },
-
     createWindowAchievmentsCondition: function() {
-        Ext.create('individualAchievments.view.main.achievmentsCondition.achievmentsConditionWindow.AchievmentsConditionWin').show()
+        let gridRecords = {
+            'update': true,
+            'create': false,
+            'delete': true,
+        };
+
+        Ext.create('individualAchievments.view.main.achievmentsCondition.achievmentsConditionWindow.AchievmentsConditionWin',{
+            viewModel: {
+                data: {
+                    achievments: gridRecords
+                }
+            }
+        }).show()
     },
-
-    addInfoAchievmentsCondition: function() {
-
-    }
 
 });

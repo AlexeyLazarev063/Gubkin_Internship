@@ -2,27 +2,35 @@ Ext.define('individualAchievments.view.main.achievmentsName.AchievmentsNameContr
     extend: 'Ext.app.ViewController',
     alias: 'controller.achievmentsName',
 
-    onItemSelectedAchievmentsName: function (item) {
-        let gridRecords = item.getSelectionModel().getSelection()[0];
+    onItemSelectedAchievmentsName: function (grid) {
+        let gridRecords = grid.getSelectionModel().getSelection()[0].data;
+        gridRecords['update'] = false;
+        gridRecords['create'] = true;
+        gridRecords['delete'] = false;
 
         Ext.create('individualAchievments.view.main.achievmentsName.achievmentsNameWindow.AchievmentsNameWin',{
             viewModel: {
                 data: {
-                    achievments: gridRecords.data
+                   achievments: gridRecords
                 }
             }
         }).show()
     },
 
-    closeWindowAchievmentsName: function(item) {
-        item.up("window").close();
-    },
-
     createWindowAchievmentsName: function() {
-        Ext.create('individualAchievments.view.main.achievmentsName.achievmentsNameWindow.AchievmentsNameWin').show()
+        let gridRecords = {
+            'update': true,
+            'create': false,
+            'delete': true,
+        };
+
+        Ext.create('individualAchievments.view.main.achievmentsName.achievmentsNameWindow.AchievmentsNameWin',{
+            viewModel: {
+                data: {
+                    achievments: gridRecords
+                }
+            }
+        }).show()
     },
 
-    addInfoAchievmentsName: function() {
-
-    }
 });

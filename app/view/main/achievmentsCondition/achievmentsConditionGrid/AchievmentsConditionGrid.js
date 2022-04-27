@@ -1,24 +1,27 @@
 Ext.define('individualAchievments.view.main.achievmentsCondition.achievmentsConditionGrid.AchievmentsConditionGrid', {
     extend: 'Ext.grid.Panel',
     xtype: 'mainlistCondGrid',
+    itemId: 'AchievmentsConditionGrid',
+    id: 'AchievmentsConditionGridId',
 
     requires: [
         'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionController',
         'individualAchievments.view.main.achievmentsCondition.AchievmentsConditionModel'
     ],
 
-    store: {
-        type: 'personnel'
-    },
+    store: 'individualAchievments.store.AchievmentsDateCondition',
 
     columns: [
         {
+            xtype:'rownumberer',
+        },
+        {
             text: 'ID',
-            dataIndex: 'id'
+            dataIndex: 'AchievmentsConditionId'
         },
         {
             text: 'Condition',
-            dataIndex: 'condition',
+            dataIndex: 'AchievmentsCondition',
             flex: 1
         }
     ],

@@ -1,15 +1,17 @@
 Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameWindow.AchievmentsNameWin', {
     extend: 'Ext.window.Window',
     xtype: 'ListNameWin',
+    itemId: 'AchievmentsNameWin',
 
     require: [
         'individualAchievments.store.achievmentsdatewin',
         "individualAchievments.view.main.achievmentsName.AchievmentsNameModel",
-        'individualAchievments.view.main.achievmentsName.AchievmentsNameController'
+        'individualAchievments.view.main.achievmentsName.AchievmentsNameController',
+        'individualAchievments.view.main.achievmentsName.AchievmentsNameWindowController'
     ],
 
     viewModel: 'datewinname',
-    controller: 'achievmentsName',
+    controller: 'achievmentsNameWindow',
 
     title: 'Achievment\'s name',
     modal: true,
@@ -19,21 +21,38 @@ Ext.define('individualAchievments.view.main.achievmentsName.achievmentsNameWindo
             width: 600,
             height: 50,
             margin: 10,
-            store: 'individualAchievments.store.achievmentsdatewin',
+            name: 'achievmentsNameField',
             valueField: 'id',
             displayField: 'condition',
             fieldLabel: 'Наименование достижения',
             labelAlign: 'top',
-            emptytext: 'Введите текст',
+            emptyText: 'Введите текст',
             bind: {
-                value: '{achievments.name}'
+                value: '{achievments.AchievmentsName}'
             }
         }
     ],
     buttons: [
         {
+            text: 'Удалить',
+            handler:'deleteInfoAchievmentsName',
+            bind:{
+                hidden: '{achievments.delete}',
+            }
+        },
+        {
+            text: 'Обновить',
+            handler:'uploadInfoAchievmentsName',
+            bind:{
+                hidden: '{achievments.update}',
+            }
+        },
+        {
             text: 'Добавить',
-            handler: 'addInfoAchievmentsName'
+            handler: 'addInfoAchievmentsName',
+            bind:{
+                hidden: '{achievments.create}',
+            }
         },
         {
             text: 'Cancel',

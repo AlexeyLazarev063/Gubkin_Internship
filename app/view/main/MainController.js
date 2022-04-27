@@ -20,8 +20,4 @@ Ext.define('individualAchievments.view.main.MainController', {
         }
     },
 
-    getFromWin: function(dateWin, id){
-        dateWin = Ext.getCmp(id).getValue();//достаёт значение из textfield по id
-    }
-
 });
