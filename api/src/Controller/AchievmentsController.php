@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\FillDtoService;
 
 class AchievmentsController extends AbstractController
 {
@@ -21,10 +22,13 @@ class AchievmentsController extends AbstractController
 
     private ValidateService $validateService;
 
-    public function __construct(MainService $mainService, ValidateService $validateService)
+    private FillDtoService $fillDtoService;
+
+    public function __construct(MainService $mainService, ValidateService $validateService, FillDtoService $fillDtoService)
     {
         $this->mainService = $mainService;
         $this->validateService = $validateService;
+        $this->fillDtoService = $fillDtoService;
     }
 
     /**
@@ -73,7 +77,7 @@ class AchievmentsController extends AbstractController
         }catch(Exception $exception){
             die($exception->getMessage());
         }
-        $dtoAchievmentsName = $this->toDto($_POST, AchievmentsNameDto::class);
+        $dtoAchievmentsName = $this->fillDtoService->toDto($_POST, AchievmentsNameDto::class);
         $achievmentsName = $this->mainService->createAchievmentsName($dtoAchievmentsName);
         return new JsonResponse($achievmentsName);
     }
@@ -88,7 +92,7 @@ class AchievmentsController extends AbstractController
         }catch(Exception $exception){
             die($exception->getMessage());
         }
-        $dtoAchievmentsStatus = $this->toDto($_POST, AchievmentsStatusDto::class);
+        $dtoAchievmentsStatus = $this->fillDtoService->toDto($_POST, AchievmentsStatusDto::class);
         $achievmentsStatus = $this->mainService->createAchievmentsStatus($dtoAchievmentsStatus);
         return new JsonResponse($achievmentsStatus);
     }
@@ -103,7 +107,7 @@ class AchievmentsController extends AbstractController
         }catch(Exception $exception){
             die($exception->getMessage());
         }
-        $dtoAchievmentsCondition = $this->toDto($_POST, AchievmentsConditionDto::class);
+        $dtoAchievmentsCondition = $this->fillDtoService->toDto($_POST, AchievmentsConditionDto::class);
         $achievmentsCondition = $this->mainService->createAchievmentsCondition($dtoAchievmentsCondition);
         return new JsonResponse($achievmentsCondition);
     }
@@ -118,7 +122,7 @@ class AchievmentsController extends AbstractController
         }catch(Exception $exception){
             die($exception->getMessage());
         }
-        $dtoAchievments = $this->toDto($_POST, AchievmentsDto::class);
+        $dtoAchievments = $this->fillDtoService->toDto($_POST, AchievmentsDto::class);
         $achievmentsAll = $this->mainService->createAchievments($dtoAchievments);
         return new JsonResponse($achievmentsAll);
     }
@@ -161,15 +165,6 @@ class AchievmentsController extends AbstractController
         $delAchievments = $this->mainService->deleteAchievments($_POST['AchievmentsId']);
 
         return new Response();
-    }
-
-    private function toDto($data, $dtoAlias)
-    {
-        $dto = new $dtoAlias();
-        foreach ($data as $propertyAlias => $value){
-            $dto->{$propertyAlias} = $value;
-        }
-        return $dto;
     }
 
 }
